@@ -47,7 +47,7 @@ class RawSignalUNet(nn.Module):
 
         b = self.bottleneck(p2)
 
-        # FIXED: Use concatenation and forced interpolation to avoid size mismatches
+        # Use concatenation and forced interpolation to avoid size mismatches
         d2 = F.interpolate(b, size=e2.shape[2], mode='linear', align_corners=False)
         d2 = self.dec2(torch.cat([d2, e2], dim=1))
 
